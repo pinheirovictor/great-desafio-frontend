@@ -7,8 +7,9 @@ import {
     Row,
 } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, Route, Routes, useParams } from 'react-router-dom';
 import { usuariosService } from '../service/resources/usuariosService';
+import Usuarios from './Usuarios';
 
 interface UsuariosPropType {
     onView?: boolean;
@@ -40,7 +41,6 @@ const Formulario = ({ onView = false, onCreate = false }: UsuariosPropType) => {
         const usuario = await usuariosService.create(user);
         console.log(usuario);
     };
-
 
     return (
 
@@ -146,8 +146,8 @@ const Formulario = ({ onView = false, onCreate = false }: UsuariosPropType) => {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit">
-                            Register
+                        <Button type="primary" htmlType="submit" >
+                            Cadastrar
                         </Button>
                     </Form.Item>
 

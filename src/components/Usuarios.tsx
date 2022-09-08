@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Table} from 'antd';
 import type { ColumnsType, TableProps } from 'antd/es/table';
 import React, { useEffect, useState } from 'react';
 import { servicesVersion } from 'typescript';
@@ -47,6 +47,21 @@ const columns: ColumnsType<UserType> = [
   {
     title: 'Data de Registro',
     dataIndex: 'registrationDate',
+  },
+
+  {
+    title: 'Visualizar',
+    dataIndex: '',
+  },
+
+  {
+    title: 'Editar',
+    dataIndex: '',
+  },
+
+  {
+    title: 'Excluir',
+    dataIndex: '',
   },
 
 

@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import Formulario from './components/Formulario';
+import Listagem from './components/Listagem';
 import Usuarios from './components/Usuarios';
 
 const { Header, Content, Footer } = Layout;
@@ -29,6 +30,11 @@ const App: React.FC = () => (
           {
             key: "Cadastro",
             label: <Link to="/usuarios">Cadastro</Link>
+          },
+
+          {
+            key: "Listagem",
+            label: <Link to="/listagem">Listagem</Link>
           }
         ]
 
@@ -40,6 +46,8 @@ const App: React.FC = () => (
       <Routes>
         <Route path="/" element={<Usuarios />} />
 
+        <Route path="/listagem" element={<Listagem />} />
+        
         <Route path="/usuarios">
           <Route path=":cpf" element={<Formulario onView/>}/>
 
