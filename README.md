@@ -27,3 +27,25 @@ Principais tecnologias utilizadas neste projeto são apresentadas na tabela abai
 | Tecnologia                               | Descrição                                                                     |
 | :--------------------------------------- | :---------------------------------------------------------------------------- |          
 | [React](https://pt-br.reactjs.org/)      | Biblioteca JavaScript para criação de aplicações web.                         |
+
+## 1.2. Organização do projeto
+
+O está organizado como:
+
+     ├── src
+        ├── assets
+        ├── components
+           ├── Formulario
+           ├── Lisgatem
+        ├── models
+          ├── user
+        ├── service
+          ├── resources
+              ├── usuarioService
+          ├── api
+        ├── types
+          ├── filter
+          ├── pagination
+        ├── utils
+          ├── table
+        └── README.md
