@@ -1,4 +1,4 @@
-import { filterProps } from "../../types/Filter";
+import { FilterProps } from "../../types/Filter";
 import api from "../api";
 
 export const usuariosService = {

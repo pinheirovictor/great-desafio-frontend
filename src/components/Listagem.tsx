@@ -7,13 +7,15 @@ import { useEffect, useState } from 'react';
 import Highlighter from 'react-highlight-words';
 import { ToastContainer, toast } from 'react-toastify';
 import '../App.css';
-import { UserType } from '../models/User';
+
 import { usuariosService } from '../service/resources/usuariosService';
-import { filterProps } from '../types/Filter';
-import { PaginationProps } from '../types/Pagination';
+import { FilterProps } from '../types/Filter';
+
 import { OPCOES_TAMANHO_PAGINA } from '../utils/Table';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { PaginationProps } from '../types/Pagination';
+import { UserType } from '../models/User';
 
 const Listagem = ({ }) => {
 
@@ -37,14 +39,13 @@ const Listagem = ({ }) => {
         name: '',
         cpf: '',
         rg: ''
-    } as filterProps);
+    } as FilterProps);
 
     const columns: ColumnProps<UserType>[] = [
         {
             title: 'Nome',
             dataIndex: 'name',
             filterSearch: true,
-            //onFilter: (value: string, record) => record.address.startsWith(value),
             width: '30%',
             render: (text: string) => (
                 <Highlighter
@@ -72,7 +73,9 @@ const Listagem = ({ }) => {
                     searchWords={[filter?.cpf]}
                     autoEscape
                     textToHighlight={text ? text.toString() : ""}
-                />)
+                />
+                
+                )
 
         },
 
@@ -85,8 +88,8 @@ const Listagem = ({ }) => {
         {
             title: 'Data de Nascimento',
             dataIndex: 'birthDate',
-            render: (text: string) => text
-            //render: (text:any)=> moment(new Date(text), 'DD-MM-YYYY'),
+            render: (text: string) => moment(text).format("DD/MM/YYYY"),
+
         },
 
         {
@@ -98,8 +101,7 @@ const Listagem = ({ }) => {
         {
             title: 'Data de Registro',
             dataIndex: 'registrationDate',
-            render: (text: string) => text
-            //render: (text:any)=> moment(new Date(text), 'DD-MM-YYYY'),
+            render: (text: string) => moment(text).format("DD/MM/YYYY"),
         },
 
         {
@@ -109,44 +111,23 @@ const Listagem = ({ }) => {
             fixed: 'right',
             render: ({ cpf }: UserType) => (
                 <Space size="large">
-                    {/* <Button
-                              style={{ background: "#f3f5a0", color: "white", borderRadius: 10 }}
-                              type="primary"
-                              ghost
-                              className="action-button"
-                              title={`Visualizar indivíduo ${nome}`}
-                          // onClick={() =>
-                          //     history.push(urls.PESSOAS_DETAILS.replace(":codigo", codigo))
-                          // }
-                          >
-                              <EyeOutlined style={{ fontSize: "1.2rem" }} />
-                          </Button> */}
-
                     <Button
-                        //onClick={() => alert('ok')}
                         style={{
-
                             color: 'black',
                             borderRadius: 10,
                             border: 'none',
                         }}
-                        //type="primary"
                         className="action-button"
                         title={`Visualizar indivíduo ${cpf}`}
-                    // onClick={() =>
-                    //     history.push(urls.PESSOAS_EDITAR.replace(":codigo", codigo))
-                    // }
                     >
-                        <Link to={`/usuarios/${cpf}`}>
-                        <EyeOutlined style={{ fontSize: '1.2rem' }} />
+                        <Link to={`/cadastro/${cpf}`}>
+                            <EyeOutlined style={{ fontSize: '1.2rem' }} />
                         </Link>
                     </Button>
 
                     <Button
-                        //onClick={() => alert('ok')}
                         className="action-button"
                         style={{
-
                             color: 'red',
                             borderRadius: 10,
                             border: 'none',
@@ -156,24 +137,18 @@ const Listagem = ({ }) => {
                         }}
                         title={`Excluir indivíduo ${cpf}`}
                     >
-
-
                         <Popconfirm
                             title="Deseja realmente deletar?"
                             onConfirm={() => { handleDeleteUser(cpf) }}
-                            // onCancel={cancel}
                             okText="Sim"
                             cancelText="Não"
                         >
-
                             <a href="#"><DeleteOutlined style={{ fontSize: '1.2rem' }} /></a>
                         </Popconfirm>
                     </Button>
                 </Space>
             ),
         },
-
-
 
     ];
 
@@ -214,7 +189,7 @@ const Listagem = ({ }) => {
         })
     }
 
-    const getUsuarios = async (filter: filterProps) => {
+    const getUsuarios = async (filter: FilterProps) => {
 
         try {
             setLoanding(true);
@@ -234,8 +209,6 @@ const Listagem = ({ }) => {
         }
     }
 
-
-
     useEffect(() => { getUsuarios(filter) }, [filter])
 
     return (
@@ -246,12 +219,9 @@ const Listagem = ({ }) => {
                 </h1>
                 <Button
                     type='primary'
-
                     size="middle"
-                //style={{ backgroundColor: '#1890ff', color: '#fff' }}
                 >
-                    <Link to="/usuarios"> Adicionar</Link>
-                   
+                    <Link to="/cadastro"> Adicionar</Link>
                 </Button>
             </Row>
 
@@ -293,7 +263,7 @@ const Listagem = ({ }) => {
                 </Col>
             </Row>
 
-            <Table rowKey={(usuario) => usuario.id} columns={columns} dataSource={usuarios} onChange={onChange} pagination={false} loading={loading}/>
+            <Table rowKey={(usuario) => usuario.id} columns={columns} dataSource={usuarios} onChange={onChange} pagination={false} loading={loading} />
 
             <Row justify="end" style={{ padding: 10 }}>
                 <Col>
@@ -330,12 +300,10 @@ const Listagem = ({ }) => {
                 }}
                 footer={[
                     <Button
-                        //style={{ backgroundColor: '#87c878', color: 'white' }}
                         type="primary"
                         key="submit"
                         onClick={() => {
                             setShowFilters(false);
-
                             onFilter(formAvancado.getFieldsValue());
                         }}
                     >
@@ -348,7 +316,6 @@ const Listagem = ({ }) => {
                     layout="vertical"
                     form={formAvancado}
                 >
-
                     <Collapse ghost defaultActiveKey={['1', '2', '3', '4']}>
                         <Collapse.Panel header="Dados pessoais" key="1">
                             <Col span={24}>
@@ -365,13 +332,10 @@ const Listagem = ({ }) => {
                                     <Input placeholder="Busque pelo RG" allowClear />
                                 </Form.Item>
                             </Col>
-
-
                         </Collapse.Panel>
                     </Collapse>
                 </Form>
             </Modal>
-
 
             <ToastContainer
                 position="top-right"

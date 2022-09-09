@@ -1,91 +1,89 @@
-import { Table} from 'antd';
-import type { ColumnsType, TableProps } from 'antd/es/table';
-import React, { useEffect, useState } from 'react';
-import { servicesVersion } from 'typescript';
-import { usuariosService } from '../service/resources/usuariosService';
+// import { Table} from 'antd';
+// import type { ColumnsType, TableProps } from 'antd/es/table';
+// import React, { useEffect, useState } from 'react';
+// import { servicesVersion } from 'typescript';
+// import { usuariosService } from '../service/resources/usuariosService';
 
-interface UserType {
-  id: React.Key;
-  name: string;
-  cpf: string;
-  rg: string;
-  birthDate: Date;
-  motherName: string;
-  registrationDate: Date;
+// interface UserType {
+//   id: React.Key;
+//   name: string;
+//   cpf: string;
+//   rg: string;
+//   birthDate: Date;
+//   motherName: string;
+//   registrationDate: Date;
+// }
 
-}
+// const columns: ColumnsType<UserType> = [
+//   {
+//     title: 'Nome',
+//     dataIndex: 'name',
+//     filterSearch: true,
+//     width: '30%',
+//   },
 
-const columns: ColumnsType<UserType> = [
-  {
-    title: 'Nome',
-    dataIndex: 'name',
-    filterSearch: true,
-    //onFilter: (value: string, record) => record.address.startsWith(value),
-    width: '30%',
-  },
+//   {
+//     title: 'CPF',
+//     dataIndex: 'cpf',
+//   },
 
-  {
-    title: 'CPF',
-    dataIndex: 'cpf',
-  },
+//   {
+//     title: 'RG',
+//     dataIndex: 'rg',
+//   },
 
-  {
-    title: 'RG',
-    dataIndex: 'rg',
-  },
+//   {
+//     title: 'Data de Nascimento',
+//     dataIndex: 'birthDate',
+//   },
 
-  {
-    title: 'Data de Nascimento',
-    dataIndex: 'birthDate',
-  },
+//   {
+//     title: 'Nome da Mãe',
+//     dataIndex: 'motherName',
+//   },
 
-  {
-    title: 'Nome da Mãe',
-    dataIndex: 'motherName',
-  },
+//   {
+//     title: 'Data de Registro',
+//     dataIndex: 'registrationDate',
+//   },
 
-  {
-    title: 'Data de Registro',
-    dataIndex: 'registrationDate',
-  },
+//   {
+//     title: 'Visualizar',
+//     dataIndex: '',
+//   },
 
-  {
-    title: 'Visualizar',
-    dataIndex: '',
-  },
+//   {
+//     title: 'Editar',
+//     dataIndex: '',
+//   },
 
-  {
-    title: 'Editar',
-    dataIndex: '',
-  },
-
-  {
-    title: 'Excluir',
-    dataIndex: '',
-  },
+//   {
+//     title: 'Excluir',
+//     dataIndex: '',
+//   },
 
 
-];
+// ];
 
 
-const onChange: TableProps<UserType>['onChange'] = (pagination, filters, sorter, extra) => {
-  console.log('params', pagination, filters, sorter, extra);
-};
+// const onChange: TableProps<UserType>['onChange'] = (pagination, filters, sorter, extra) => {
+//   console.log('params', pagination, filters, sorter, extra);
+// };
 
-const Usuarios: React.FC = () => {
+ const Usuarios = () => {
 
-  const [usuarios, setUsuarios] = useState([]);
+//   const [usuarios, setUsuarios] = useState([]);
   
-  const getUsuarios = async ()=>{
-    const {data} = await usuariosService.listar({});
-    setUsuarios(data.content);
-  }
+//   const getUsuarios = async ()=>{
+//     const {data} = await usuariosService.listar({});
+//     setUsuarios(data.content);
+//   }
 
-  useEffect(()=>{getUsuarios()}, [])
-  return <Table rowKey={(usuario)=>usuario.id} columns={columns} dataSource={usuarios} onChange={onChange} />
+//   useEffect(()=>{getUsuarios()}, [])
+//   return <Table rowKey={(usuario)=>usuario.id} columns={columns} dataSource={usuarios} onChange={onChange} />
 
 
-};
+ };
 
 export default Usuarios;
 

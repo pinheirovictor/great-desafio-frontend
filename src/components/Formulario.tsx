@@ -17,13 +17,11 @@ import moment from 'moment';
 
 const Formulario = () => {
     const [form] = Form.useForm();
-
     const { cpf } = useParams();
 
     const getUsuarioCpf = async () => {
         if (cpf) {
             const { data } = await usuariosService.buscarByCpf(cpf);
-            //form.setFieldsValue({ ...data, birthDate: new Date(data.birthDate) });
             form.setFieldsValue(data);
         }
     }
@@ -72,7 +70,7 @@ const Formulario = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your name!',
+                                    message: 'Informe o seu nome!',
                                 },
                             ]}
                         >
@@ -88,7 +86,7 @@ const Formulario = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your CPF!',
+                                    message: 'Informe o seu CPF!',
                                 },
 
                             ]}
@@ -106,7 +104,7 @@ const Formulario = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your RG!',
+                                    message: 'Informe o seu RG!',
                                 },
                             ]}
 
@@ -128,7 +126,7 @@ const Formulario = () => {
 
                         >
                             {!cpf ?
-                                <DatePicker style={{ width: "100%" }} format="DD/MM/YYYY" />
+                                <DatePicker style={{ width: "100%" }} format="DD/MM/YYYY"/>
                                 : <Input />
                             }
                         </Form.Item>
@@ -141,7 +139,7 @@ const Formulario = () => {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your nome da mãe!',
+                                    message: 'Informe o nome da sua mãe!',
                                 },
                             ]}
 
@@ -159,16 +157,13 @@ const Formulario = () => {
                             </Form.Item>
 
                             <Form.Item>
-
                                 <Button type="primary" htmlType="submit" >
                                     Cadastrar
                                 </Button>
                             </Form.Item>
 
-
                         </Col>
                     }
-
 
                 </Row>
             </Form>
@@ -185,7 +180,6 @@ const Formulario = () => {
                 pauseOnHover
                 theme="colored"
             />
-
         </div>
 
     );

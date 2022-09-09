@@ -1,4 +1,4 @@
-export interface filterProps {
+export interface FilterProps {
     ativo: boolean,
     page: number,
     size: number,
