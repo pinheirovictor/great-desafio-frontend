@@ -18,3 +18,12 @@ Uma aplicação que cadastra e lista usuários por filtros.
 4. Build e deploy
 5. Desenvolvimento 
 -->
+
+## 1. Descrição do projeto
+## 1.1. Tecnologias
+
+Principais tecnologias utilizadas neste projeto são apresentadas na tabela abaixo.
+
+| Tecnologia                               | Descrição                                                                     |
+| :--------------------------------------- | :---------------------------------------------------------------------------- |          
+| [React](https://pt-br.reactjs.org/)      | Biblioteca JavaScript para criação de aplicações web.                         |
