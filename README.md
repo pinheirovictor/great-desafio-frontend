@@ -36,7 +36,7 @@ O está organizado como:
         ├── assets
         ├── components
            ├── Formulario
-           ├── Lisgatem
+           ├── Listagem
         ├── models
           ├── user
         ├── service
@@ -48,4 +48,13 @@ O está organizado como:
           ├── pagination
         ├── utils
           ├── table
+        ├── app
         └── README.md
+        
+ # SRC
+| Pasta                     | Descrição                                                                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| assets                    | Contém os elementos visuais da aplicação, como imagens, etc...                                                                  |
+| components                | Contém componentes reutilizáveis ao decorrer da aplicação.                                                                      |
+| screens                   | Contém as páginas da aplicação.                                                                                                 |
+| services                  | Contém a comunicação da aplicação com a Api.    
