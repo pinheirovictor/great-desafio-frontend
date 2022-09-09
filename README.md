@@ -58,3 +58,10 @@ O está organizado como:
 | components                | Contém componentes reutilizáveis ao decorrer da aplicação.                                                                      |
 | screens                   | Contém as páginas da aplicação.                                                                                                 |
 | services                  | Contém a comunicação da aplicação com a Api.    
+
+
+
+| Arquivo                   | Descrição                                                                           |
+| ------------------------- | ----------------------------------------------------------------------------------- |
+| Formulario                | Contém os componentes de formulário da aplicação                                    |
+| Listagem                  | Página de listagem da aplicação.                                                    |
