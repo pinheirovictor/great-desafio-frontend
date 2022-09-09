@@ -65,3 +65,14 @@ O está organizado como:
 | ------------------------- | ----------------------------------------------------------------------------------- |
 | Formulario                | Contém os componentes de formulário da aplicação                                    |
 | Listagem                  | Página de listagem da aplicação.                                                    |
+
+
+## 1.3. Específicações sobre as funcionalidades
+É possível cadastar, listar, visualizar informações de um usuários e filtrar buscas por usuários. A seguir veja com mais detalhes cada uma delas.
+
+|Operação     | Descrição
+|------------ | -----------------------
+| Cadastrar   | É possível cadastrar usuários.
+| Listar      | É possível listar todos os usuários.
+| Visualizar  | É possível visaulizar todas as informações de um usuário.
+| Filtro      | É possivel filtar busca por usuários pelo Nome, CPF e RG.
