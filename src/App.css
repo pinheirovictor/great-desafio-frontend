@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  margin-top:20px;
+  background: #fff;
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1em rgb(185, 185, 185);
+}
+
+.layout{
+  height:100vh;
+}
+

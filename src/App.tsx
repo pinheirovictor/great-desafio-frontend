@@ -14,7 +14,7 @@ import Usuarios from './components/Usuarios';
 const { Header, Content, Footer } = Layout;
 
 const App: React.FC = () => (
-  <Layout className="layout">
+  <Layout className="layout" >
     <Header>
       <div className="logo" />
       <Menu
@@ -22,11 +22,7 @@ const App: React.FC = () => (
         mode="horizontal"
         defaultSelectedKeys={['2']}
         items={[
-          {
-            key: "Usuários",
-            label: <Link to="/">Usuários</Link>
-          },
-
+          
           {
             key: "Cadastro",
             label: <Link to="/usuarios">Cadastro</Link>
@@ -34,7 +30,7 @@ const App: React.FC = () => (
 
           {
             key: "Listagem",
-            label: <Link to="/listagem">Listagem</Link>
+            label: <Link to="/listagem">Listagem de usuários</Link>
           }
         ]
 
@@ -47,17 +43,17 @@ const App: React.FC = () => (
         <Route path="/" element={<Usuarios />} />
 
         <Route path="/listagem" element={<Listagem />} />
-        
-        <Route path="/usuarios">
-          <Route path=":cpf" element={<Formulario onView/>}/>
 
-          <Route path="" element={<Formulario onCreate/>}/>
+        <Route path="/usuarios">
+          <Route path=":cpf" element={<Formulario />} />
+
+          <Route path="" element={<Formulario />} />
         </Route>
 
       </Routes>
-      <div className="site-layout-content">Content</div>
+
     </Content>
-    <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Victor Pinheiro</Footer>
+
   </Layout>
 
 );

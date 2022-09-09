@@ -1,9 +1,13 @@
+import { filterProps } from "../../types/Filter";
 import api from "../api";
 
 export const usuariosService = {
 
-  async listar(paramns: any) {
-    return await api.get(`/usuarios`, paramns);
+  async listar(params: any) {
+      return await api.get(`/usuarios`, {
+        params,
+      });
+  
   },
 
   async buscarByCpf(cpf: string) {
@@ -12,6 +16,10 @@ export const usuariosService = {
 
   async create(user: any) {
     return await api.post(`/usuarios`, user);
+  },
+
+  async delete(cpf:string) {
+    return await api.delete(`/usuarios/${cpf}`);
   },
 
 }

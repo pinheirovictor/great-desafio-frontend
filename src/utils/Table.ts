@@ -1,0 +1,1 @@
+export const OPCOES_TAMANHO_PAGINA = [4, 8, 20];

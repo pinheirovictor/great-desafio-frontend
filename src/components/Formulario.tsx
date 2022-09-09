@@ -7,157 +7,186 @@ import {
     Row,
 } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { Navigate, Route, Routes, useParams } from 'react-router-dom';
+import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import { usuariosService } from '../service/resources/usuariosService';
 import Usuarios from './Usuarios';
-
-interface UsuariosPropType {
-    onView?: boolean;
-    onCreate?: boolean;
-}
+import '../App.css';
+import { ToastContainer, toast } from 'react-toastify';
+import moment from 'moment';
 
 
-const Formulario = ({ onView = false, onCreate = false }: UsuariosPropType) => {
+const Formulario = () => {
     const [form] = Form.useForm();
 
     const { cpf } = useParams();
 
     const getUsuarioCpf = async () => {
-        console.log(cpf);
-        if(cpf){
-        const {data} = await usuariosService.buscarByCpf(cpf);
-        form.setFieldsValue({...data, birthDate: new Date(data.birthDate)});
+        if (cpf) {
+            const { data } = await usuariosService.buscarByCpf(cpf);
+            //form.setFieldsValue({ ...data, birthDate: new Date(data.birthDate) });
+            form.setFieldsValue(data);
         }
     }
 
-    useEffect(()=>{
-        if(onView)
-            getUsuarioCpf();
-    }, [])
-
-    
-
     const onFinish = async (user: any) => {
-        const usuario = await usuariosService.create(user);
-        console.log(usuario);
+        try {
+            const usuario = await usuariosService.create(user);
+            toast.success('Usuário cadastrado com sucesso!!');
+        } catch (error) {
+            toast.error('Erro ao cadastrar usuário!!');
+        } finally {
+            form.resetFields();
+        }
     };
 
+    useEffect(() => {
+        if (cpf) {
+            getUsuarioCpf();
+        } else {
+            form.resetFields();
+        }
+    }, [cpf])
+
     return (
-
-        <Form
-            style={{ padding: "2rem", width: "100%", display: "flex", justifyContent: "center" }}
-            form={form}
-            name="register"
-            layout="vertical"
-            onFinish={onFinish}
-
-        >
-            <Row>
-
-                <Col span="24">
-                    <Form.Item
-                        name="name"
-                        label="Nome"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your name!',
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-
-                <Col span="24">
-                    <Form.Item
-
-                        name="cpf"
-                        label="CPF"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your CPF!',
-                            },
-
-                        ]}
-
-
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-
-                <Col span="24">
-                    <Form.Item
-                        name="rg"
-                        label="RG"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your RG!',
-                            },
-                        ]}
-
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-
-                <Col span="24">
-                    <Form.Item
-                        name="birthDate"
-                        label="Data de Nascimento"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your Data de Nascimento!',
-                            },
-                        ]}
-
-                    >
-                        {onView?"11/11/1997":
-                        <DatePicker style={{ width: "100%" }} format="DD/MM/YYYY" disabledDate={(d) => !d || d.isAfter(new Date())} />
-                        }
-                        </Form.Item>
-                </Col>
-
-                <Col span="24">
-                    <Form.Item
-                        name="motherName"
-                        label="Nome da Mãe"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Please input your nome da mãe!',
-                            },
-                        ]}
-
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-
-                <Col span="24" style={{ display: "flex", justifyContent: "space-between" }}>
-                    <Form.Item>
-                        <Button type="primary" danger htmlType="reset">
-                            Limpar
-                        </Button>
-                    </Form.Item>
-
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" >
-                            Cadastrar
-                        </Button>
-                    </Form.Item>
-
-
-                </Col>
-
-
-
+        <div className="container">
+            <Row justify="space-between" align="top">
+                <h1>
+                    <strong>Cadastro de Usuários</strong>
+                </h1>
+                
             </Row>
-        </Form>
+
+            <Form
+                style={{ padding: "2rem", width: "100%", display: "flex", justifyContent: "center" }}
+                form={form}
+                name="register"
+                layout="vertical"
+                onFinish={onFinish}
+
+            >
+                <Row>
+                    <Col span="24">
+                        <Form.Item
+                            name="name"
+                            label="Nome"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your name!',
+                                },
+                            ]}
+                        >
+                            <Input />
+                        </Form.Item>
+                    </Col>
+
+                    <Col span="24">
+                        <Form.Item
+
+                            name="cpf"
+                            label="CPF"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your CPF!',
+                                },
+
+                            ]}
+
+
+                        >
+                            <Input />
+                        </Form.Item>
+                    </Col>
+
+                    <Col span="24">
+                        <Form.Item
+                            name="rg"
+                            label="RG"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your RG!',
+                                },
+                            ]}
+
+                        >
+                            <Input />
+                        </Form.Item>
+                    </Col>
+
+                    <Col span="24">
+                        <Form.Item
+                            name="birthDate"
+                            label="Data de Nascimento"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Informe sua Data de Nascimento!',
+                                },
+                            ]}
+
+                        >
+                            {!cpf ?
+                                <DatePicker style={{ width: "100%" }} format="DD/MM/YYYY" />
+                                : <Input />
+                            }
+                        </Form.Item>
+                    </Col>
+
+                    <Col span="24">
+                        <Form.Item
+                            name="motherName"
+                            label="Nome da Mãe"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your nome da mãe!',
+                                },
+                            ]}
+
+                        >
+                            <Input />
+                        </Form.Item>
+                    </Col>
+
+                    {!cpf &&
+                        <Col span="24" style={{ display: "flex", justifyContent: "space-between" }}>
+                            <Form.Item>
+                                <Button type="primary" danger htmlType="reset">
+                                    Limpar
+                                </Button>
+                            </Form.Item>
+
+                            <Form.Item>
+
+                                <Button type="primary" htmlType="submit" >
+                                    Cadastrar
+                                </Button>
+                            </Form.Item>
+
+
+                        </Col>
+                    }
+
+
+                </Row>
+            </Form>
+
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
+
+        </div>
 
     );
 };
