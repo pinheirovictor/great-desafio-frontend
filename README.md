@@ -76,3 +76,28 @@ O está organizado como:
 | Listar      | É possível listar todos os usuários.
 | Visualizar  | É possível visaulizar todas as informações de um usuário.
 | Filtro      | É possivel filtar busca por usuários pelo Nome, CPF e RG.
+
+
+## 2.  Como executar
+
+# WebApp
+
+Clone o projeto e acesse a pasta onde foi clonado.
+Para iniciá-lo usando o **yarn**, siga os passos abaixo:
+
+```
+# Instalar as dependências com yarn 
+$ yarn
+```
+
+Para iniciá-lo usando o **npm**, siga os passos abaixo:
+
+```
+# Instalar as dependências com npm 
+$ npm install
+```
+
+Por fim para executá-lo, execute:
+```
+yarn start
+```
