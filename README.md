@@ -1,4 +1,4 @@
-# Great-desafio
+# GREat-desafio-frontend
 Uma aplicação que cadastra e lista usuários por filtros.
 
 * Tela de cadastro de usuários
