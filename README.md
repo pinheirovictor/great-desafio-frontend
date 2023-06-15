@@ -75,7 +75,7 @@ O está organizado como:
 |Operação     | Descrição
 |------------ | -----------------------
 | Cadastrar   | É possível cadastrar usuários.
-| Listar      | É possível listar todos os usuários.
+| Listar      | É possível listar todos os usuários
 | Visualizar  | É possível visaulizar todas as informações de um usuário.
 | Filtro      | É possivel filtar busca por usuários pelo Nome, CPF e RG.
 
