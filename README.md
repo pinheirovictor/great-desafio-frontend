@@ -56,7 +56,7 @@ O está organizado como:
  # SRC
 | Pasta                     | Descrição                                                                                                                       |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| assets                    | Contém os elementos visuais da aplicação, como imagens, etc...                                                                  |
+| assets                    | Contém os elementos visuais da aplicação, como imagens, etc.                                                                    |
 | components                | Contém componentes reutilizáveis ao decorrer da aplicação.                                                                      |
 | screens                   | Contém as páginas da aplicação.                                                                                                 |
 | services                  | Contém a comunicação da aplicação com a Api.    
